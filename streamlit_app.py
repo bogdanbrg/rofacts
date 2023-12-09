@@ -1,7 +1,7 @@
 import streamlit as st
 #import plotly.express as px
 import pandas as pd
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import wbgapi as wb
 
