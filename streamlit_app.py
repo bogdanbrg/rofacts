@@ -9,7 +9,7 @@ st.set_page_config(page_title = "Rofacts", page_icon = ":bar_chart:", layout="wi
 st.title(":bar_chart: Romania indicators")
 
 
-df = pd.read_csv(r'C:/Users/bogda/OneDrive/Data/ro_unemployment.csv')
+df = pd.read_csv(r'C:\Users\bogda\OneDrive\Data\ro_unemployment.csv')
 color_background = 'rgb(253,241,230)'
 
 fig = go.Figure()
