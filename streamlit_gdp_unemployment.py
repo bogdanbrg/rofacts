@@ -20,7 +20,7 @@ df_unemployment_transposed = df_unemployment.T.reset_index()
 # Rename the columns
 df_unemployment_transposed.columns = ['year', 'unemployment rate']
 
-# Print the transposed DataFrame
+# Transpose DataFrame
 
 df_unemployment_transposed['year'] = df_unemployment_transposed['year'].str.replace('YR', '')
 
@@ -46,9 +46,59 @@ fig.update_layout(
 )
 
 
+##############################Get Romanian GDP + other indicators here: https://data.worldbank.org/country/RO
+
+df_gdp =wb.data.DataFrame('NY.GDP.MKTP.CD', 'ROU', range(1990,2023))
+# Transpose DataFrame while keeping the index as columns
+df_gdp_transposed = df_gdp.T.reset_index()
+
+# Rename the columns
+df_gdp_transposed.columns = ['year', 'GDP_amount']
+
+
+#remove "YR"
+
+df_gdp_transposed['year'] = df_gdp_transposed['year'].str.replace('YR', '')
+
+
+# Convert the 'year' column to datetime
+df_gdp_transposed['year'] = pd.to_datetime(df_gdp_transposed['year'], format='%Y')
+
+
+# Define background color
+color_background = 'rgb(253,241,230)'
+
+fig_gdp = go.Figure()
+
+df_gdp = df_gdp_transposed
+
+# Add a line trace for GDP
+fig_gdp.add_trace(go.Scatter(x=df_gdp['year'], y=df_gdp['GDP_amount'],
+                         mode='lines+markers',
+                         name='GDP_amount'))
+
+# Update layout
+fig_gdp.update_layout(
+    title='GDP Evolution Over the Years',
+    xaxis_title='Year',
+    yaxis_title='GDP Amount ($bn)',
+    plot_bgcolor=color_background,
+    paper_bgcolor=color_background
+)
+
+# Show the plot
+#fig_gdp.show()
+
 # Show the plot
 
-st.plotly_chart(fig)
+#st.plotly_chart(fig_gdp)
+
+cc1,cc2 = st.columns([1,1])
+
+with cc1:
+    st.plotly_chart(fig_gdp)
+    st.plotly_chart(fig)
+
 
 
 
