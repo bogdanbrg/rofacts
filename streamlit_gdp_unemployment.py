@@ -127,7 +127,7 @@ fig_inflation.update_layout(
 
 #st.plotly_chart(fig_gdp)
 
-col1,col2 = st.columns(2, gap = "medium")
+col1,col2 = st.columns(2, gap = "small")
 
 with col1:
     st.plotly_chart(fig_gdp)
