@@ -9,7 +9,7 @@ import wbgapi as wb
 
 st.set_page_config(page_title = "Economic and Social indicators", page_icon = ":bar_chart:", layout="wide")
 
-st.title(":bar_chart: Romania indicators merge sau nu?")
+st.title(":bar_chart: Romania indicators")
 
 # Get unemployment data from wb    
 df_unemployment =wb.data.DataFrame('SL.UEM.TOTL.NE.ZS', 'ROU', range(1994,2023))
@@ -127,7 +127,7 @@ fig_inflation.update_layout(
 
 #st.plotly_chart(fig_gdp)
 
-col1,col2 = st.columns(2, gap = "small")
+col1,col2 = st.columns(2)
 
 with col1:
     st.plotly_chart(fig_gdp)
